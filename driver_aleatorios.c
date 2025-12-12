@@ -1,3 +1,6 @@
+// Tema 1: Gerador de números aleatórios com write
+// Gabriel Derrel Martins Santee
+// Guilherme Ponciano Silva
 #include <linux/module.h>
 #include <linux/device.h>
 #include <linux/fs.h>
@@ -69,7 +72,7 @@ static int __init inicializar(void){
         return id_driver;
     }
 
-    seed = (u32) jiffies;
+    seed = (u32) jiffies; // ticks desde o boot
     prandom_seed_state(&estado_aleatorio, seed); // seta o estado aleatório do prandom com a seed
     
     // cria o driver
