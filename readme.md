@@ -20,7 +20,12 @@ make
 sudo make install
 ```
 
-### 3. Testar o driver
+### 3. Verificar instalação
+```bash
+cat /proc/devices
+```
+
+### 4. Testar o driver
 
 **Setar a seed no driver (Write):**
 ```bash
@@ -32,12 +37,12 @@ echo "12345" > /dev/Num_Aleatorios
 hexdump -n 4 -e '"0x%08X \n"' /dev/Num_Aleatorios
 ```
 
-### 4. Remover o driver
+### 5. Remover o driver
 ```bash
 sudo make remove
 ```
 
-### 5. Limpar arquivos de compilação
+### 6. Limpar arquivos de compilação
 ```bash
 make clean
 ```
