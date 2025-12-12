@@ -4,7 +4,7 @@ Este projeto implementa um driver de dispositivo para Linux que fornece números
 
 ## Pré-requisitos
 
-- Sistema Linux com kernel compilável
+- Sistema Linux
 - Ferramentas de compilação (make, gcc)
 - Headers do kernel (kernel-headers)
 
@@ -49,7 +49,7 @@ make clean
 
 ## Descrição
 
-O driver cria um driver de dispositivo de caractere em `/dev/Num_Aleatorios` que permite:
+O código implementa um driver de dispositivo de caractere em `/dev/Num_Aleatorios` que permite:
 - Setar seeds
 - Ler valores aleatórios de 4 bytes
 
@@ -58,12 +58,11 @@ O formato de leitura usa `hexdump` para exibir o valor em hexadecimal de 32 bits
 ## Estrutura do Projeto
 
 - `Makefile` - Script de compilação e instalação
-- `*.c` - Código fonte do driver (não especificado no texto fornecido)
+- `*.c` - Código fonte do driver
 
 ## Notas de Segurança
 
-- O comando `make install` e `make remove` requerem privilégios de superusuário (sudo)
-- O dispositivo `/dev/Num_Aleatorios` pode requerer ajustes de permissão para acesso de usuários não-root
+- O comando `make install` e `make remove` requerem privilégios de root (sudo)
 
 ## Licença
 
