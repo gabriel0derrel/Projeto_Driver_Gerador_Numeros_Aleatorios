@@ -23,7 +23,6 @@ static ssize_t ler_driver(struct file *arquivo, char __user *buffer_usuario, siz
     
     numero_aleatorio = prandom_u32_state(&estado_aleatorio);
 
-    // if == 1 -> erro
     if(copy_to_user(buffer_usuario, &numero_aleatorio, num_bytes_copiados)){ // coloca o número no buffer do usuário
         return -EFAULT;
     }
@@ -40,7 +39,6 @@ static ssize_t escrever_no_driver(struct file *arquivo, const char __user *buffe
         return -EINVAL;
     }
     
-    // Copia do usuário para buffer local
     if(copy_from_user(buffer_de_escrita_temp, buffer_usuario, tamanho_lido)){ // copia a string do buffer do usuário
         return -EFAULT;
     }
