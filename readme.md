@@ -67,4 +67,4 @@ O formato de leitura usa `hexdump` para exibir o valor em hexadecimal de 32 bits
 
 ## Licença
 
-Veja o arquivo [LICENSE](./LICENSE) para informações referentes ao licenciamento.
+Veja o arquivo [LICENSE](./LICENSE) para informações referentes ao licenciamento. 
