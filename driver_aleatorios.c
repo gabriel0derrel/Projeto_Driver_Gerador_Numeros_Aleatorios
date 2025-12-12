@@ -14,10 +14,6 @@ static u32 numero_aleatorio = 0;
 static char buffer_de_escrita_temp[32];
 struct rnd_state estado_aleatorio;
 
-static int abrir_driver(struct inode *inode, struct file *arquivo_aberto){
-    return 0;
-}
-
 static ssize_t ler_driver(struct file *arquivo, char __user *buffer_usuario, size_t tamanho_maximo, loff_t *deslocamento){
     size_t num_bytes_copiados = min(sizeof(u32), tamanho_maximo);
     
@@ -56,7 +52,6 @@ static ssize_t escrever_no_driver(struct file *arquivo, const char __user *buffe
 // Estrutura de operações do dispositivo
 static struct file_operations operacoes = {
     .owner = THIS_MODULE,
-    .open = abrir_driver,
     .read = ler_driver,
     .write = escrever_no_driver,
 };
