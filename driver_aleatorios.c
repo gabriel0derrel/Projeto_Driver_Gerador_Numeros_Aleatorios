@@ -1,4 +1,4 @@
-// Tema 1: Gerador de números aleatórios com write
+// Tema 1: Gerador de números aleatórios com write que muda a seed
 // Gabriel Derrel Martins Santee
 // Guilherme Ponciano Silva
 #include <linux/module.h>
@@ -15,7 +15,7 @@ static int id_driver;
 static u32 seed = 0;
 static u32 numero_aleatorio = 0;
 static char buffer_de_escrita_temp[32];
-struct rnd_state estado_aleatorio;
+struct rnd_state estado_aleatorio; // variável que guarda o estado aleatório do prandom
 
 static int abrir_driver(struct inode *inode, struct file *arquivo_aberto){
     return 0;
@@ -48,7 +48,7 @@ static ssize_t escrever_no_driver(struct file *arquivo, const char __user *buffe
         return -EFAULT;
     }
     
-    buffer_de_escrita_temp[tamanho_lido] = '\0'; // torna o vetor de bytes em uma string
+    buffer_de_escrita_temp[tamanho_lido] = '\0'; // torna o vetor de chars em uma string
     
     if(kstrtou32(buffer_de_escrita_temp, 0, &seed)){ // str to int do kernel
         return -EINVAL;
@@ -84,7 +84,7 @@ static int __init inicializar(void){
 static void __exit sair(void){
     // destroi o driver
     device_destroy(NULL, MKDEV(id_driver, 0));
-    unregister_chrdev(id_driver, NOME); // retira o degistro do /dev
+    unregister_chrdev(id_driver, NOME); // retira o registro do /dev
 }
 
 module_init(inicializar); // seta função de inicialização
